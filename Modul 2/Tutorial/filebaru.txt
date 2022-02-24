@@ -1,0 +1,6 @@
+Andi,70.5,Cowo
+Budi,40.5,Cowo
+Caca,20.9,Cewe
+Dedi,80.9,Cowo
+Eko,95.4,Lord
+Fakhri,90.0,Cowo

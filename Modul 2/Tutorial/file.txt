@@ -1,0 +1,6 @@
+Andi,70.5
+Budi,40.5
+Caca,20.9
+Dedi,80.9
+Eko,95.4
+Fakhri,90.0
