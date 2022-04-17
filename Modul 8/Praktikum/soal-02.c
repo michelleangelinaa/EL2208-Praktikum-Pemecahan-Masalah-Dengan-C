@@ -171,7 +171,7 @@ int queen_aman_ga(char** catur, int size, int i, int j) {
     // Aman dari kuda?
     // Pola serangan kuda, kombinasi operasi index +-, dikombinasikan dengan 1,2
     // 8 petak serangan kuda
-    int x[8];
+    int x[8]; // Array indeks untuk serangan kuda
     int y[8];
     x[0] = i+1;
     y[0] = j+2;
@@ -198,11 +198,13 @@ int queen_aman_ga(char** catur, int size, int i, int j) {
     y[7] = j-1;
 
     int index;
+     // Pengecekan apakah index valid di 8 petak serangan kuda, dan apakah ada kuda pada petak tersebut (which is harusnya ada)
     for (index=0; index<8; index++) {
         if (valid_index(size, x[index], y[index]) && catur[x[index]][y[index]] == 'K') {
             return 0;
         }
     }
+    // Lolos kualifikasi, queen akan dimasukkan ke dalam papan catur
     catur[i][j] = 'Q';
 
     return 1;
@@ -211,13 +213,16 @@ int queen_aman_ga(char** catur, int size, int i, int j) {
 // Fungsi untuk menyelesaikan masalah hidup
 void ans(char** catur, int size, char** solution, int q_count, int *n_ratu) {
     int i, j;
+    // Buat petak catur baru
     char** catur_cpy = newboard(size);
 
     for (i=0; i<size; i++) {
         for (j=0; j<size; j++) {
             salin_papan_catur(size, catur, catur_cpy);
+	     // Cek queennya dan isi queen
             if (queen_aman_ga(catur_cpy, size, i, j)) {
                 if (q_count+1 >= *n_ratu) {
+		    // Misalkan n_ratu adalah jumlah sementara, q_count untuk menampung hasil updatean ratu
                     salin_papan_catur(size, catur_cpy, solution);
                     *n_ratu = q_count+1;
                 }
